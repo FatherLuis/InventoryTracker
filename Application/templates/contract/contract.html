@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Contract{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+<!------ Contact Information -------------------------------------------------------------------------->  
+    <h2> Contact Information </h2>
+
+    <div class="form-group">
+        <label for="TodayDate">Today's Date:</label>
+        <input type="date" class="form-control" id="TodayDate">
+    </div>
+
+    <div class="form-group">
+        <label for="FirstName">First Name:</label>
+        <input type="text" class="form-control" id="FirstName">
+    </div>
+
+    <div class="form-group">
+        <label for="LastName">Last Name:</label>
+        <input type="text" class="form-control" id="LastName">
+    </div>
+
+    <div class="form-group">
+            <label for="Email">Email:</label>
+            <input type="email" class="form-control" id="Email">
+    </div>  
+
+    <div class="form-group">
+            <label for="MobileNumber">Mobile Number:</label>
+            <input type="tel" class="form-control" id="MobileNumber">
+    </div>
+<!------ Course Information --------------------------------------------------------------------------->       
+
+<!--
+    <div class="form-group">
+        <label for="Semester">Semester:</label>
+        <input type="text" class="form-control" id="Semester">
+    </div>
+-->
+    <h2> Course Information </h2>
+
+    <div class="form-group">
+        <label for="Semester">Select Semester:</label>
+        <select id="Semester" class="form-control">
+          <option>Select Semester...</option>
+          <!--In the Future, I'll use a for-loop to fill this portion.
+            Infomration will come from a database.-->
+          <option>Fall 2019</option>
+          <option>Spring 2020</option>
+        </select>
+    </div>
+<!--
+    <div class="form-group">
+        <label for="CourseID">CourseID:</label>
+        <input type="text" class="form-control" id="CourseID">
+    </div>
+-->
+    <div class="form-group">
+        <label for="Course">Select Course:</label>
+        <select id="Course" class="form-control">
+          <option>Select Course...</option>
+          <!--In the Future, I'll use a for-loop to fill this portion.
+            Infomration will come from a database.-->
+          <option>Math 1314</option>
+          <option>Math 1342</option>
+        </select>
+    </div>
+
+<!--
+    <div class="form-group">
+        <label for="Professor">Professor Name:</label>
+        <input type="text" class="form-control" id="Professor">
+    </div>
+-->
+
+    <div class="form-group">
+            <label for="Professor">Select Professor:</label>
+            <select id="Professor" class="form-control">
+            <option>Select Professor...</option>
+            <!--In the Future, I'll use a for-loop to fill this portion.
+                Infomration will come from a database.-->
+            <option> Prof. Jackson</option>
+            <option> Prof. Lyles</option>
+            </select>
+    </div>
+
+    <div class="form-group">
+            <label for="CourseEndDate">Course End Date:</label>
+            <input type="date" class="form-control" id="CourseEndDate">
+    </div>   
+
+<!------ Submit Information --------------------------------------------------------------------------->    
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+{% endblock %}

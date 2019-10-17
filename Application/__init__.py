@@ -16,5 +16,7 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     app.add_url_rule('/', endpoint='index')
 
+    from . import contract
+    app.register_blueprint(contract.bp)
        
     return app
