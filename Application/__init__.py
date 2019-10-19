@@ -18,5 +18,9 @@ def create_app(test_config=None):
 
     from . import contract
     app.register_blueprint(contract.bp)
-       
+
+    from . import dashboard
+    app.register_blueprint(dashboard.bp)
+    app.add_url_rule('/dashboard', endpoint='dashboard')
+
     return app
