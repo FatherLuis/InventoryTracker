@@ -3,10 +3,13 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
+from Application.auth import login_required
+from Application.db import get_db
 
 bp = Blueprint('contract', __name__)
 
 @bp.route('/contract',methods=('GET', 'POST'))
+@login_required
 def contract():
     # CHECK CREDENTIALS
 
