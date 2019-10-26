@@ -20,22 +20,23 @@ def login():
         db = get_db()
         error = None
         user = db.execute(
-            'SELECT * FROM user WHERE username = ?', (username,)
+            'SELECT * FROM Login WHERE Username = ?', (username,)
         ).fetchone()
 
         if user is None:
             error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
+        elif not check_password_hash(user['Password'], password):
             error = 'Incorrect password.'
 
         if error is None:
             session.clear()
-            session['user_id'] = user['id']
+            session['user_id'] = user['LoginID']
             return redirect(url_for("dashboard.dashboard"))
 
         flash(error)
 
-    return render_template('auth/login.html')
+    return render_template('auth/login.html') 
+
 
 
 
@@ -52,13 +53,13 @@ def register():
         elif not password:
             error = 'Password is required.'
         elif db.execute(
-            'SELECT id FROM user WHERE username = ?', (username,)
+            'SELECT LoginID FROM Login WHERE Username = ?', (username,)
         ).fetchone() is not None:
             error = 'User {} is already registered.'.format(username)
 
         if error is None:
             db.execute(
-                'INSERT INTO user (username, password) VALUES (?, ?)',
+                'INSERT INTO Login (Username, Password) VALUES (?, ?)',
                 (username, generate_password_hash(password))
             )
             db.commit()
@@ -79,7 +80,7 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = get_db().execute(
-            'SELECT * FROM user WHERE id = ?', (user_id,)
+            'SELECT * FROM Login WHERE LoginID = ?', (user_id,)
         ).fetchone()
 
 @bp.route('/logout')

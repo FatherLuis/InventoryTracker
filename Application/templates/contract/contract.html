@@ -86,11 +86,14 @@
     <div class="form-group">
         <label for="Semester">Select Semester:</label>
         <select id="Semester" class="form-control">
-          <option>Select Semester...</option>
-          <!--In the Future, I'll use a for-loop to fill this portion.
-            Infomration will come from a database.-->
-          <option>Fall 2019</option>
-          <option>Spring 2020</option>
+            <option>Select Semester...</option>
+            <!--In the Future, I'll use a for-loop to fill this portion.
+                 Infomration will come from a database.-->
+
+            {%for semester in semesters%} 
+                <option>{{semester}}</option>
+            {%endfor%}
+
         </select>
     </div>
 <!--
@@ -102,11 +105,11 @@
     <div class="form-group">
         <label for="Course">Select Course:</label>
         <select id="Course" class="form-control">
-          <option>Select Course...</option>
-          <!--In the Future, I'll use a for-loop to fill this portion.
-            Infomration will come from a database.-->
-          <option>Math 1314</option>
-          <option>Math 1342</option>
+            <option>Select Course...</option>
+
+            {%for course in courses%}
+                <option>{{course}}</option>
+            {%endfor%}
         </select>
     </div>
 
@@ -120,11 +123,11 @@
     <div class="form-group">
             <label for="Professor">Select Professor:</label>
             <select id="Professor" class="form-control">
-            <option>Select Professor...</option>
-            <!--In the Future, I'll use a for-loop to fill this portion.
-                Infomration will come from a database.-->
-            <option> Prof. Jackson</option>
-            <option> Prof. Lyles</option>
+                <option>Select Professor...</option>
+
+                {%for professor in professors%}
+                    <option>{{professor}}</option>
+                {%endfor%}
             </select>
     </div>
 

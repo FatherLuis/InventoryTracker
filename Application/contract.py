@@ -11,7 +11,11 @@ bp = Blueprint('contract', __name__)
 @bp.route('/contract',methods=('GET', 'POST'))
 @login_required
 def contract():
-    # CHECK CREDENTIALS
+    
+    db = get_db()
+    semester = [x[0] for x in db.execute("SELECT [SemesterName] FROM [Semester]").fetchall()]
+    course = [x[0] for x in db.execute("SELECT [CourseName] FROM [Course]").fetchall()]
+    professor = [x[0] for x in db.execute("SELECT Person.FirstName || ' ' || Person.LastName AS name FROM [Person] JOIN [Professor] ON [Professor].PersonID = [Person].PersonID").fetchall()]
 
 
     if request.method == "POST":
@@ -21,17 +25,5 @@ def contract():
         elif 'submit' in request.form:
             return 'Happy'
 
-    return render_template('contract/contract.html')
 
-
-
-
-
-
-
-
-
-
-
-
-    return render_template('contract/contract.html')
+    return render_template('contract/contract.html',semesters = semester,courses=course,professors=professor)
